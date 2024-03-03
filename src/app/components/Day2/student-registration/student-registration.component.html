@@ -1,38 +1,48 @@
 <div class="container">
   <h2>Student Registration Form</h2>
-  <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+  <form (submit)="sendValues()">
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="student.name" required minlength="4">
-      <div *ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].dirty || registrationForm.controls['name'].touched)" class="text-danger">
-        Name is required and must be at least 4 characters.
-      </div>
+      <input type="text" class="form-control" id="name" name="fname" [(ngModel)]="name" required minlength="4"
+       [ngClass]="{
+        'is-valid': NameValidation,
+        'is-invalid': !NameValidation && NameTouched
+      }">
+
+      <div class="valid-feedback">Done</div>
+      <div class="invalid-feedback">Name is required and must be at least 4 characters.</div>
     </div>
     <div class="mb-3">
       <label for="age" class="form-label">Age:</label>
-      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="student.age" required min="10" max="17">
-      <div *ngIf="registrationForm.controls['age'].invalid && (registrationForm.controls['age'].dirty || registrationForm.controls['age'].touched)" class="text-danger">
-        Age is required and must be between 10 and 17.
-      </div>
+      <input type="number" class="form-control" id="age" name="age" [(ngModel)]="age" required min="10" max="17"
+      [ngClass]="{
+        'is-valid': AgeValidation,
+        'is-invalid': !AgeValidation && AgeTouched
+      }">
+
+      <div class="valid-feedback">Done</div>
+      <div class="invalid-feedback">Age is required and must be between 10 and 17.</div>
     </div>
     <div class="mb-3">
       <label for="address" class="form-label">Address:</label>
-      <select class="form-control" id="address" name="address" [(ngModel)]="student.address" required>
+      <select class="form-control" id="address" name="address" [(ngModel)]="address" required>
         <option value="">Select Address</option>
         <option value="Alex">Alex</option>
         <option value="Cairo">Cairo</option>
         <option value="Giza">Giza</option>
       </select>
-      <div *ngIf="registrationForm.controls['address'].invalid && (registrationForm.controls['address'].dirty || registrationForm.controls['address'].touched)" class="text-danger">
-        *
-      </div>
+      <div class="valid-feedback">Done</div>
+      <div class="invalid-feedback">*</div>
     </div>
     <div class="mb-3">
       <label for="phone" class="form-label">Phone Number:</label>
-      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="student.phone" required pattern="01[0125][0-9]{8}">
-      <div *ngIf="registrationForm.controls['phone'].invalid && (registrationForm.controls['phone'].dirty || registrationForm.controls['phone'].touched)" class="text-danger">
-        Phone number is required and must be a valid Egyptian mobile number (010, 011, 012, or 015) with 11 digits.
-      </div>
+      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="phone" required pattern="01[0125][0-9]{8}"
+      [ngClass]="{
+        'is-valid': PhoneValidation,
+        'is-invalid': !PhoneValidation && PhoneTouched
+      }">
+      <div class="valid-feedback">Done</div>
+      <div class="invalid-feedback">Phone number is required and must be a valid Egyptian mobile number (010, 011, 012, or 015) with 11 digits.</div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
@@ -51,7 +61,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of registeredStudents; let i = index">
+      <tr *ngFor="let student of Students; let i = index">
         <td>{{ student.name }}</td>
         <td>{{ student.age }}</td>
         <td>{{ student.address }}</td>
