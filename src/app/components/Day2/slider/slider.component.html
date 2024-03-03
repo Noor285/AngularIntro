@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <img [src]="currentImage" class="d-block w-100" alt="slider">
+
+      <button class="btn btn-primary" (click)="previous()"><</button>
+      <button class="btn btn-primary" (click)="next()">></button>
+      <button class="btn btn-primary" (click)="play()">play</button>
+      <button class="btn btn-danger" (click)="stop()">stop</button>
+    </div>
+  </div>
+</div>
+
