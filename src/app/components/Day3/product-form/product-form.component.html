@@ -1,0 +1,121 @@
+<div class="container mt-5 p-5 bg-light">
+  <form [formGroup]="productForm" class="text-left text-black mt-4 "  (submit)="(GetProducts())">
+    <h2 class="text-center">Products Form</h2>
+
+    <div class="row">
+        <div class="col-1"></div>
+      <div class="col-10">
+        <label for="name" style="font-size: 20px; font-weight: 200px;" class="form-label mt-5">Product Name</label>
+        <input type="text" class="form-control" name="name" formControlName="name" [ngClass]="{
+          'is-valid': nameControl?.valid,
+          'is-invalid': nameControl?.errors && nameControl?.dirty
+        }">
+        <div class="invalid-feedback">
+          <ng-container *ngIf="nameControl?.hasError('minlength')">
+            Name must be more than 5 letters
+          </ng-container>
+          <ng-container *ngIf="nameControl?.hasError('required')">
+            Name is required
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+     <div class="col-1"></div>
+      <div class="col-10">
+        <label style="font-size: 20px; font-weight: 200px;" for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" name="category" formControlName="category" [ngClass]="{
+          'is-valid': categoryControl?.valid,
+          'is-invalid': categoryControl?.errors && categoryControl?.dirty
+        }">
+        <div class="invalid-feedback">
+          <ng-container *ngIf="categoryControl?.hasError('minlength')">
+            Category must be more than 4 letters
+          </ng-container>
+          <ng-container *ngIf="categoryControl?.hasError('required')">
+            Category is required
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+   <div class="row mt-4">
+    <div class="col-1"></div>
+     <div class="col-10">
+       <label style="font-size: 20px; font-weight: 200px;" for="price" class="form-label">Price</label>
+       <input type="number" class="form-control" name="price" formControlName="price" [ngClass]="{
+         'is-valid': priceControl?.valid,
+         'is-invalid': priceControl?.errors && priceControl?.dirty
+       }">
+       <div class="invalid-feedback">
+         <ng-container *ngIf="priceControl?.hasError('min')">
+           Price must be more than 100
+         </ng-container>
+         <ng-container *ngIf="priceControl?.hasError('required')">
+           Price is required
+         </ng-container>
+       </div>
+     </div>
+   </div>
+
+    <div class="row mt-4">
+    <div class="col-1"></div>
+      <div class="col-10">
+        <label style="font-size: 20px; font-weight: 200px;" for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" name="quantity" formControlName="quantity" [ngClass]="{
+          'is-valid': quantityControl?.valid,
+          'is-invalid': quantityControl?.errors && quantityControl?.dirty
+        }">
+        <div class="invalid-feedback">
+          <ng-container *ngIf="quantityControl?.hasError('min')">
+            Quantity must be more than 5 units
+          </ng-container>
+          <ng-container *ngIf="quantityControl?.hasError('required')">
+            Quantity is required
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+     <div class="col-1"></div>
+      <div class="col-10">
+        <label style="font-size: 20px; font-weight: 200px;" for="discount" class="form-label">Discount</label>
+        <input type="number" class="form-control" name="discount" formControlName="discount" [ngClass]="{
+          'is-valid': discountControl?.valid,
+          'is-invalid': discountControl?.errors && discountControl?.dirty
+        }">
+        <div class="invalid-feedback">
+          <ng-container *ngIf="discountControl?.hasError('min') || discountControl?.hasError('max')">
+            Discount must be between 5% and 25%
+          </ng-container>
+          <ng-container *ngIf="discountControl?.hasError('required')">
+            Discount is required
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+    <div class="col-1"></div>
+      <div class="col-10">
+        <label style="font-size: 20px; font-weight: 200px;" for="sale" class="form-label">On Sale ?</label>
+        <input type="checkbox" class="form-check-control ms-2" name="sale" formControlName="onSale">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+     <div class="col-1"></div>
+      <div class="col">
+        <!-- [disabled]="!productForm.valid" -->
+        <button type="button" class="btn btn-outline-primary">Add Product</button>
+      </div>
+    </div>
+    <br>
+
+  </form>
+
+</div>
+

@@ -9,7 +9,10 @@ import { AsideComponent } from './components/Day1/aside/aside.component';
 import { HomeComponent } from './components/Day1/home/home.component';
 import { SliderComponent } from './components/Day2/slider/slider.component';
 import { StudentRegistrationComponent } from './components/Day2/student-registration/student-registration.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './components/Day3/product/product.component';
+import { ProductDetailsComponent } from './components/Day3/product-details/product-details.component';
+import { ProductFormComponent } from './components/Day3/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,15 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     SliderComponent,
     StudentRegistrationComponent,
+    ProductComponent,
+    ProductDetailsComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
