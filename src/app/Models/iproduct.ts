@@ -5,6 +5,4 @@ export interface IProduct {
   discount:number,
   price:number,
   onSale:boolean | undefined,
-  image:string
-
 }
